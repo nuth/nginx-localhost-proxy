@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  dev-proxy:
+    container_name: nginx-dev
+    network_mode: host
+    image: nginx:latest
+    volumes:
+      - ./proxy.conf:/etc/nginx/conf.d/default.conf
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./_wildcard.proxy.localhost.pem:/etc/nginx/ssl/_wildcard.proxy.localhost.pem
+      - ./_wildcard.proxy.localhost-key.pem:/etc/nginx/ssl/_wildcard.proxy.localhost-key.pem
